@@ -3,7 +3,8 @@ This simple python script is a herbarium label generator that enables easy creat
 Example? Here you go:
 
 <img width="1678" height="1187" alt="ExampleLabels" src="https://github.com/user-attachments/assets/77d97b8f-f9a2-4c5a-bf7c-e55a33753a91" />
-(darkmode on my pdf viewer just so nobody's eyes have to burn)
+(darkmode on my pdf viewer just so nobody's eyes will hurt)
+
 
 Required structure
 - Input file: Excel (.xlsx) or CSV (.csv), one row per specimen.
