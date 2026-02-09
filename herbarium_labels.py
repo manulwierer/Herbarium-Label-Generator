@@ -43,7 +43,7 @@ class AdvancedHerbariumConfig:
         # Font settings
         self.default_font = "Times-Roman"
         self.label_font_size = 7  # For field labels
-        self.value_font_size = 9  # For values
+        self.value_font_size = 9  # For column values
         self.min_font_size = 5    # Ensures readability for standard printers
         
         # Spacing (in cm)
@@ -313,3 +313,4 @@ if __name__ == "__main__":
     generator.generate_pdf(r"/YourOutputFilePathHere.pdf")
     
     print("\n✓ Done! Check for herbarium_labels.pdf in the current directory")
+
