@@ -1,5 +1,5 @@
 # Herbarium-Label-Generator
-This simple python script is a herbarium label generator that enables easy creation of pdf files from .csv or .xlsx tables. I created this because other open projects did not quite have what I wanted for my personal herbarium. If you'd like deep integration with iNaturalist this is not for you.
+This simple python script is a herbarium label generator that enables easy creation of pdf files from .csv or .xlsx tables. I created this because other open projects did not quite have what I wanted for my personal herbarium. If you'd like to have deep integration with iNaturalist this is not for you but other projects are out there!
 
 Required structure
 - Input file: Excel (.xlsx) or CSV (.csv), one row per specimen.
@@ -16,25 +16,23 @@ Workings
 Customisation
 1) Input and output paths
 - Change the input file path in the main block:
-  generator.load_data(r"FULL_PATH_TO_YOUR_FILE.xlsx")
-  or
-  generator.load_data(r"FULL_PATH_TO_YOUR_FILE.csv")
+  generator.load_data(r"Path2YourFile/Filename.xlsx")
+  or if you use a csv adjust to
+  generator.load_data(r"Path2YourFile/Filename.csv")
 - Change the output PDF path where generate_pdf(...) is called:
-  generator.generate_pdf(r"FULL_PATH_TO_OUTPUT\herbarium_labels.pdf")
+  generator.generate_pdf(r"Path2TheOutputFile/Filename.pdf")
 
 2) Label size and layout
 - In AdvancedHerbariumConfig.__init__:
   self.label_width  = 14.0   # cm, horizontal size
   self.label_height = 10.0   # cm, vertical size
+- For A4 this is a very appropriate size but it could technically be slightly larger
 - The script uses landscape A4 and a fixed 2x2 grid in generate_pdf().
 
 3) Fields in the 4 information rows
 - In AdvancedHerbariumConfig.__init__, look at self.info_rows.
 - Each row is defined as:
-  LabelRow([
-      LabelField("Display Name", "column_name", width_ratio),
-      ...
-  ], height=0.75)
+  LabelRow([      LabelField("Display Name", "column_name", width_ratio),      ...  ], height=0.75)
 - "Display Name" is the text shown on the label (e.g. "Family").
 - "column_name" must match a column in your data (e.g. "family").
 - width_ratio controls relative width of each field in that row (numbers are scaled to fill the row).
@@ -69,9 +67,9 @@ Things that generally should not be changed
 - The meaning of width_ratio in LabelField and height_ratio in TextBlock.
   Keep them as positive numbers; only change their relative values.
 
-Minimum stepts to take
+Minimum steps to take
 1) Point load_data(...) to your own .xlsx or .csv file.
 2) Make sure your file has the required column names, or adjust the column_name values in self.info_rows and self.text_blocks.
-alternativly if you do not have that many columns just use the first 1, 2, or 3 columns of each row and optionally delete some rows entirely
+alternativly if you do not have that many columns just use the first 1, 2, or 3 columns of each row and/or optionally delete some rows entirely
 3) Optionally adjust height_ratio for the two text blocks so that the first or second textblock gets more space or delete one entirely if your descriptions are extremly long
 4) Optionally rename fields (Display Name) or tweak font sizes and label dimensions.
